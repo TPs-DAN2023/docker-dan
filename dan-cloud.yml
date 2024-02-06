@@ -9,7 +9,7 @@ services:
       # Use an image built from the specified dockerfile in the `polling-app-server` directory.
       dockerfile: ./Dockerfile
     ports:
-      - 3080:8080
+      - 9400:8082
     environment:
       - spring.profiles.active=default
     networks:
@@ -29,18 +29,18 @@ services:
     depends_on:
       - dan-gateway
 
-  dan-eureka:
-    container_name: dan-eureka
-    build:
-      context: ../dan-eureka-srv/
-      # Use an image built from the specified dockerfile in the `polling-app-server` directory.
-      dockerfile: ./Dockerfile
-    ports:
-      - 8761:8761
-    environment:
-      - spring.profiles.active=default
-    networks:
-      - dan-db-network
+  # dan-eureka:
+  #   container_name: dan-eureka
+  #   build:
+  #     context: ../dan-eureka-srv/
+  #     # Use an image built from the specified dockerfile in the `polling-app-server` directory.
+  #     dockerfile: ./Dockerfile
+  #   ports:
+  #     - 8761:8761
+  #   environment:
+  #     - spring.profiles.active=default
+  #   networks:
+  #     - dan-db-network
 
 networks:
   dan-db-network:
