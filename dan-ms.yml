@@ -30,7 +30,7 @@ services:
     environment:
       - DB_PASS="pgpassword"
       - DB_USER="pguser"
-      - DB_NAME="pgdan"
+      - DB_NAME="pg-dan"
       - DB_PORT="5432"
     networks:
       - dan-db-network
