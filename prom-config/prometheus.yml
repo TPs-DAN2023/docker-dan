@@ -5,14 +5,14 @@ global:
   # scrape_timeout is set to the global default (10s).
 
 # Alertmanager configuration
-alerting:
-  alertmanagers:
-    - static_configs:
-        - targets:
+# alerting:
+#   alertmanagers:
+#     - static_configs:
+#         - targets:
           # - alertmanager:9093
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-rule_files:
+# rule_files:
   # - "first_rules.yml"
   # - "second_rules.yml"
 
@@ -33,18 +33,18 @@ scrape_configs:
     scrape_interval: 5s
     metrics_path: "/actuator/prometheus"
     static_configs:
-      - targets: ["dan-gateway:8080"]
+      - targets: ["dan-gateway:8082"]
 
   - job_name: "ms-usuarios"
     scheme: http
     scrape_interval: 5s
-    metrics_path: "/usuarios/actuator/prometheus"
+    metrics_path: "/actuator/prometheus"
     static_configs:
-      - targets: ["ms-usuarios:8080"]
+      - targets: ["lb://MS-USUARIOS"]
 
   - job_name: "ms-pedidos"
     scheme: http
     scrape_interval: 5s
     metrics_path: "/actuator/prometheus"
     static_configs:
-      - targets: ["ms-pedidos:8080"]
+      - targets: ["lb://MS-PEDIDOS"]
