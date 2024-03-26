@@ -42,6 +42,19 @@ services:
       mode: replicated
       replicas: 2
 
+  ms-ofertas:
+    build:
+      context: ../ms-ofertas/
+      dockerfile: ./Dockerfile
+    environment:
+      - SPRING_DATASOURCE_URL=mongodb://root:dan@localhost:27017/dan-ofertas-precios?authSource=admin
+      - spring.profiles.active=default
+    networks:
+      - dan-db-network
+    deploy:
+      mode: replicated
+      replicas: 2
+
   dan-appui:
     container_name: dan-appui
     build:
