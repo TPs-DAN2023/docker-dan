@@ -35,16 +35,6 @@ scrape_configs:
     static_configs:
       - targets: ["dan-gateway:8082"]
 
-  - job_name: "ms-usuarios"
-    scheme: http
-    scrape_interval: 5s
-    metrics_path: "/actuator/prometheus"
-    static_configs:
-      - targets: ["lb://MS-USUARIOS"]
-
-  - job_name: "ms-pedidos"
-    scheme: http
-    scrape_interval: 5s
-    metrics_path: "/actuator/prometheus"
-    static_configs:
-      - targets: ["lb://MS-PEDIDOS"]
+  - job_name: "eureka"
+    eureka_sd_configs:
+    - server: "http://dan-eureka:8761/eureka"
